@@ -4,7 +4,7 @@ import theme from '../themes.js'
 
 const styles = StyleSheet.create({
     text:{
-        fontsize: theme.fontSizes.body,
+        fontSize: theme.fontSizes.body,
         color: theme.color.textPrimary,
         fontFamily: theme.fonts.main,
         fontWeight: theme.fontWeights.normal
