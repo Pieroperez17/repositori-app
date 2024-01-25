@@ -1,14 +1,23 @@
-import React from 'react';
-import {View} from 'react-native';
-import RepositoryList from './RepositoryList';
-import AppBar from './AppBar';
+import React from 'react'
+import {Text, View} from 'react-native'
+import RepositoryList from './RepositoryList.jsx'
+import AppBar from './AppBar.jsx'
+import { Route,Switch,  } from 'react-router-native'
 
 const Main = () => {
     return (
         <View style={{ flex:1 }}>
             <AppBar/>
-            <RepositoryList/>
+            <Switch>
+                <Route path='/' exact>
+                    <RepositoryList />
+                </Route>
+                <Route path='/signin' exact>
+                    <Text>Work on it</Text>
+                </Route>
+                <Redirect to='/' />
+            </Switch>    
         </View>
     )
 }
-export default Main;
+export default Main
