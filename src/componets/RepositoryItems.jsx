@@ -1,15 +1,25 @@
 import React from "react";
-import {View, StyleSheet} from "react-native"
+import {Image,View, StyleSheet} from "react-native"
 import StyleText from "./StyledText"
 import RepositoryStarts from "./RepositoryStats"
+import theme from "../themes";
 
-
+const RepositoryItemHeader = ({ownerAvatarUrl,fullName,description,language}) => (
+    <View style={{flexDirection:'row', paddingBottom:2,}}>
+        <View style={{flex: 0,paddingRight:10,}}>
+            <Image style={styles.image} source={{uri: ownerAvatarUrl}}/>
+        </View>
+        <View style={{flex: 1,}}>
+            <StyleText fontWeight='bold'>Fullname: {fullName}</StyleText>
+            <StyleText color='secondary'>{description}</StyleText>
+            <StyleText style={styles.language}>{language}</StyleText>
+        </View>
+    </View>
+)
 
 const RepositoryItems = (props) => (
     <View key={props.id} style={styles.container}>
-        <StyleText fontSize='subheading' fontWeight='bold'>Fullname: {props.fullName}</StyleText>
-        <StyleText >{props.description}</StyleText>
-        <StyleText >{props.language}</StyleText>
+        <RepositoryItemHeader {... props} />
         <RepositoryStarts {... props} />
     </View>
 )   
@@ -17,8 +27,22 @@ const RepositoryItems = (props) => (
 const styles = StyleSheet.create({  
     container:{
         padding: 20,
-        paddingBottom: 5,
-        paddingTop: 5,
+        paddingVertical: 5,
+    },
+    language:{
+        padding: 4,
+        color: theme.color.white,
+        backgroundColor: theme.color.primary,
+        alignSelf: 'flex-start',
+        marginVertical: 4,    
+        borderRadius: 4,
+        overflow: 'hidden',
+    },
+    image:{
+        width: 48,
+        height: 48,
+        margin: 'auto',
+        borderRadius: 4,
     }
 })
 

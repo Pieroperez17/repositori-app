@@ -34,11 +34,12 @@ export default function StyleText({align ,children, color, fontSize, fontWeight,
         color === 'primary' && styles.colorPrimary,
         color === "secondary" && styles.colorSecondary,
         fontSize === "subheading" && styles.subheading,
-        fontWeight === "bold" && styles.bold,
+        fontWeight === "bold" && styles.bold,   
+        style   
     ]
 
     return (
-        <Text style={textStyles}{...restOfProps}>
+        <Text style={textStyles} {...restOfProps}>
             {children}
         </Text>
     )
